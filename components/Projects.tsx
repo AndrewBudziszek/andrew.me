@@ -50,7 +50,7 @@ export default function Projects() {
         <div className="mb-16">
           <span className="font-mono text-primary-400 text-sm mb-4 block">04. Projects</span>
           <h2 className="text-4xl md:text-6xl font-bold text-gray-100 mb-4">
-            Things I've{' '}
+            Things I&apos;ve{' '}
             <span className="text-gradient">built</span>
           </h2>
         </div>

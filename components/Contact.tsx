@@ -40,11 +40,11 @@ export default function Contact() {
         <div className="mb-16">
           <span className="font-mono text-primary-400 text-sm mb-4 block">05. Contact</span>
           <h2 className="text-4xl md:text-6xl font-bold text-gray-100 mb-4">
-            Let's{' '}
+            Let&apos;s{' '}
             <span className="text-gradient">connect</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mt-6">
-            I'm always open to discussing new opportunities, interesting projects, 
+            I&apos;m always open to discussing new opportunities, interesting projects, 
             or just having a conversation about technology.
           </p>
         </div>

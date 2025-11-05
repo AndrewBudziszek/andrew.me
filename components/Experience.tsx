@@ -73,7 +73,7 @@ export default function Experience() {
         <div className="mb-16">
           <span className="font-mono text-primary-400 text-sm mb-4 block">02. Experience</span>
           <h2 className="text-4xl md:text-6xl font-bold text-gray-100 mb-4">
-            Where I've{' '}
+            Where I&apos;ve{' '}
             <span className="text-gradient">worked</span>
           </h2>
         </div>

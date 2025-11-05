@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function About() {
   const [imageError, setImageError] = useState(false)
@@ -27,11 +28,14 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-lg blur-xl"></div>
                   <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-dark-700 bg-dark-800">
                     {!imageError ? (
-                      <img
+                      <Image
                         src="/profile.jpg"
                         alt="Andrew Budziszek"
+                        width={256}
+                        height={256}
                         className="w-full h-full object-cover"
                         onError={() => setImageError(true)}
+                        unoptimized
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-dark-800">
@@ -50,18 +54,18 @@ export default function About() {
                 Hi there! 👋
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                 I'm Andrew, a software engineer crafting savings experiences for millions of users 
+                 I&apos;m Andrew, a software engineer crafting savings experiences for millions of users 
                 at <span className="text-primary-400"><a href="https://www.rocketmoney.com" target="_blank" rel="noopener noreferrer">Rocket Money</a></span>. I help build 
                 high performance apps and processes using React Native, TypeScript, and a solid (sometimes) AWS stack that helps millions manage their finances.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
                 My journey spans from fintech startups to enterprise financial systems 
-                at Northwestern Mutual. I've worked on everything from greenfield 
+                at Northwestern Mutual. I&apos;ve worked on everything from greenfield 
                 projects to legacy modernization, always with a focus on clean code 
                 and thoughtful architecture.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                When I'm not shipping features, I'm exploring new technologies, 
+                When I&apos;m not shipping features, I&apos;m exploring new technologies, 
                 hanging out with my goldendoodle, Fern, and thinking about how to make the world a better place.
               </p>
             </div>
