@@ -13,60 +13,79 @@ export default function Hero({ shouldAnimate }: HeroProps) {
   const [showContent, setShowContent] = useState(false)
   const [showButtons, setShowButtons] = useState(false)
 
-  // Terminal command typing
-  const terminalCommand = '$ cat about-andrew.txt'
-  const { displayedText: terminalText, isTyping: isTerminalTyping } = useTyping(
-    terminalCommand,
-    30,
-    shouldAnimate ? 200 : 0
-  )
+  const commandSpeed = 18
+  const outputSpeed = 22
+  const firstNameSpeed = 35
+  const lastNameSpeed = 35
+  const titleSpeed = 28
+  const tagsSpeed = 20
+  const descriptionSpeed = 14
 
-  // Terminal output typing
+  const terminalCommand = 'cat about-andrew.txt'
   const terminalOutput = 'Building fintech experiences for humans'
-  const { displayedText: outputText, isTyping: isOutputTyping } = useTyping(
-    terminalOutput,
-    40,
-    shouldAnimate ? terminalCommand.length * 30 + 500 : 0
-  )
-
-  // Name typing
   const firstName = 'Andrew'
   const lastName = 'Budziszek'
-  const { displayedText: firstNameText } = useTyping(
-    firstName,
-    60,
-    shouldAnimate ? terminalCommand.length * 30 + terminalOutput.length * 40 + 800 : 0
-  )
-  const { displayedText: lastNameText } = useTyping(
-    lastName,
-    60,
-    shouldAnimate ? terminalCommand.length * 30 + terminalOutput.length * 40 + firstName.length * 60 + 1000 : 0
-  )
-
-  // Title typing
   const title = 'Senior Software Engineer'
-  const { displayedText: titleText } = useTyping(
-    title,
-    50,
-    shouldAnimate ? terminalCommand.length * 30 + terminalOutput.length * 40 + firstName.length * 60 + lastName.length * 60 + 1200 : 0
-  )
-
-  // Tags typing
   const tags = 'React Native • TypeScript • Node.js'
-  const { displayedText: tagsText } = useTyping(
-    tags,
-    30,
-    shouldAnimate ? terminalCommand.length * 30 + terminalOutput.length * 40 + firstName.length * 60 + lastName.length * 60 + title.length * 50 + 1400 : 0
-  )
-
-  // Description typing
   const descriptionBeforeCraft = "Crafting mobile and web experiences that help millions manage their finances. Passionate about combining AI with the craft of building software to "
   const descriptionAfterCraft = "create meaningful experiences for humans."
   const fullDescription = descriptionBeforeCraft + descriptionAfterCraft
+
+  const baseDelay = shouldAnimate ? 120 : 0
+  const commandDuration = terminalCommand.length * commandSpeed
+  const outputDuration = terminalOutput.length * outputSpeed
+  const firstNameDuration = firstName.length * firstNameSpeed
+  const lastNameDuration = lastName.length * lastNameSpeed
+  const titleDuration = title.length * titleSpeed
+  const tagsDuration = tags.length * tagsSpeed
+
+  const commandDelay = shouldAnimate ? baseDelay : 0
+  const outputDelay = shouldAnimate ? commandDelay + commandDuration + 150 : 0
+  const firstNameDelay = shouldAnimate ? outputDelay + outputDuration + 180 : 0
+  const lastNameDelay = shouldAnimate ? firstNameDelay + firstNameDuration + 150 : 0
+  const titleDelay = shouldAnimate ? lastNameDelay + lastNameDuration + 170 : 0
+  const tagsDelay = shouldAnimate ? titleDelay + titleDuration + 150 : 0
+  const descriptionDelay = shouldAnimate ? tagsDelay + tagsDuration + 180 : 0
+
+  const { displayedText: terminalText, isTyping: isTerminalTyping } = useTyping(
+    terminalCommand,
+    commandSpeed,
+    commandDelay
+  )
+
+  const { displayedText: outputText, isTyping: isOutputTyping } = useTyping(
+    terminalOutput,
+    outputSpeed,
+    outputDelay
+  )
+
+  const { displayedText: firstNameText } = useTyping(
+    firstName,
+    firstNameSpeed,
+    firstNameDelay
+  )
+  const { displayedText: lastNameText } = useTyping(
+    lastName,
+    lastNameSpeed,
+    lastNameDelay
+  )
+
+  const { displayedText: titleText } = useTyping(
+    title,
+    titleSpeed,
+    titleDelay
+  )
+
+  const { displayedText: tagsText } = useTyping(
+    tags,
+    tagsSpeed,
+    tagsDelay
+  )
+
   const { displayedText: descriptionText } = useTyping(
     fullDescription,
-    20,
-    shouldAnimate ? terminalCommand.length * 30 + terminalOutput.length * 40 + firstName.length * 60 + lastName.length * 60 + title.length * 50 + tags.length * 30 + 1600 : 0
+    descriptionSpeed,
+    descriptionDelay
   )
 
   useEffect(() => {
@@ -74,7 +93,7 @@ export default function Hero({ shouldAnimate }: HeroProps) {
       const timer = setTimeout(() => {
         setShowTerminal(true)
         setShowContent(true)
-      }, 300)
+      }, 200)
       return () => clearTimeout(timer)
     } else {
       setShowTerminal(true)

@@ -77,8 +77,17 @@ export default function Terminal({ onEnter, isActive }: TerminalProps) {
               </div>
 
               {showPrompt && (
-                <div className="mt-6 text-dark-400 text-sm animate-fade-in select-none">
-                  <span className="text-accent-400 select-none">→</span> Hit <kbd className="px-2 py-1 bg-dark-700 border border-dark-600 rounded text-primary-400 select-none">Enter</kbd> to continue
+                <div className="mt-6 text-dark-400 text-sm animate-fade-in select-none space-y-4">
+                  <div>
+                    <span className="text-accent-400 select-none">→</span> Hit <kbd className="px-2 py-1 bg-dark-700 border border-dark-600 rounded text-primary-400 select-none">Enter</kbd> to continue
+                  </div>
+                  <button
+                    type="button"
+                    onClick={onEnter}
+                    className="md:hidden inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500 transition-colors"
+                  >
+                    Tap Enter
+                  </button>
                 </div>
               )}
             </div>
